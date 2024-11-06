@@ -25,8 +25,6 @@ public class transactions extends JFrame implements ActionListener {
         text.setFont(new Font("System",Font.BOLD,16));
         image.add(text);
 
-
-
         fastcash = new JButton("Cash Withdraw");
         fastcash.setBounds(355,415,150,30);
         fastcash.addActionListener(this);

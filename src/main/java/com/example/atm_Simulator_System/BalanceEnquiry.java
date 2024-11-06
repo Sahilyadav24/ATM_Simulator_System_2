@@ -40,29 +40,22 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    if (rs.getString("type").equals("Deposit")) {
-                        balance += Integer.parseInt(rs.getString("amount")); // Assuming the column name is "amount"
-                    } else {
-                        balance -= Integer.parseInt(rs.getString("amount"));
+                    String transactionType = rs.getString("type");
+                    int amount = Integer.parseInt(rs.getString("amount"));
+
+                    if (transactionType.equalsIgnoreCase("Deposit")) {
+                        balance += amount;
+                    } else if (transactionType.equalsIgnoreCase("Withdrawal")) {
+                        balance -= amount;
                     }
                 }
             }
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            if (con != null && con.s != null) {
-                try {
-                    con.s.close();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
 
-        JLabel text = new JLabel("Your current account balance is = " + balance);
+        JLabel text = new JLabel("Your current account balance is = Rs " + balance);
         text.setForeground(Color.WHITE);
         text.setBounds(170, 300, 400, 30);
         image.add(text);
@@ -101,13 +94,12 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new BalanceEnquiry(" ");
+        new BalanceEnquiry(" "); // Replace with a valid PIN number for testing
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         setVisible(false);
-        new transactions(pinnumber).setVisible(true); // Fixed the parameter to pass the correct pinnumber
+        new transactions(pinnumber).setVisible(true); // Pass the correct pinnumber to the transactions window
     }
 }
-
