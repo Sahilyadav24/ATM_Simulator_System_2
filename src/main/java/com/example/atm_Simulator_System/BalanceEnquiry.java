@@ -92,14 +92,12 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
         }
         return email;
     }
-
     public static void main(String[] args) {
-        new BalanceEnquiry(" "); // Replace with a valid PIN number for testing
+        new BalanceEnquiry(" ");
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         setVisible(false);
-        new transactions(pinnumber).setVisible(true); // Pass the correct pinnumber to the transactions window
+        new transactions(pinnumber).setVisible(true);
     }
 }

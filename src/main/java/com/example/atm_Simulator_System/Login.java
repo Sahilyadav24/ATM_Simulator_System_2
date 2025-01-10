@@ -11,7 +11,6 @@ public class Login extends JFrame implements ActionListener {
     JTextField cardText;
     JPasswordField pinText;
 
-
     Login(){
         setTitle("ATM AUTOMATED TELLER MACHINE");
 
@@ -76,7 +75,6 @@ public class Login extends JFrame implements ActionListener {
         otpRequest.setForeground(Color.WHITE);
         otpRequest.addActionListener(this);
         add(otpRequest);
-
 
         forgotCardNumberButton = new JButton("Forgot Card Number");
         forgotCardNumberButton.setBounds(300, 420, 200, 30);
